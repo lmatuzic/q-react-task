@@ -1,8 +1,0 @@
-@use '../abstracts';
-
-.card {
-  border: 1px solid abstracts.$black;
-  border-radius: abstracts.$border-radius;
-  padding: 1rem;
-  cursor: pointer;
-}

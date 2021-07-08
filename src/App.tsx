@@ -23,11 +23,6 @@ const App: FC = () => {
     fetchData();
   }, []);
 
-  const showAllPosts = () => {
-    console.log(posts);
-  }
-  showAllPosts();
-
   return (
     <div className="App">
       <nav>
@@ -48,8 +43,11 @@ const App: FC = () => {
             <h1>Home</h1>
           </Route>
 
-          <Route path="/posts">
-            <Posts posts={posts}/>
+          {/* this route must have exact because if it doesn't, it won't open details of post */}
+          <Route exact path="/posts">
+            <Posts 
+              posts={posts}
+            />
           </Route>
           
           <Route path="/posts/:id">

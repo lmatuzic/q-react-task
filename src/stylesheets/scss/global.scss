@@ -1,8 +1,8 @@
 @use './abstracts';
 @use './components';
 
-.content {
-  background-color: abstracts.$baby-gray;
+a {
+  text-decoration: none;
 }
 
 .container {

@@ -1,18 +1,27 @@
-.card {
-  border: 1px solid #181616;
-  border-radius: 4px;
-  padding: 1rem;
-  cursor: pointer;
-}
-
 .posts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1rem;
 }
+@media (max-width: 768px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
+}
+.posts .post {
+  border: 1px solid #181616;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+}
+.posts .post__link {
+  display: flex;
+  color: #181616;
+}
 
-.content {
-  background-color: #f8f6f6;
+a {
+  text-decoration: none;
 }
 
 .container {

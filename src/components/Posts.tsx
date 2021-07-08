@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Post } from '../types';
+import { Link } from 'react-router-dom'
 
 type PostProps = {
   posts: Post[];
@@ -12,12 +13,11 @@ const Posts: FC<PostProps> = ({ posts }) => {
         {
           posts && posts.map(post => {
             return (
-              <div className="card" key={post.id}>
-                <div>
-                  <strong>Post title: </strong>
-                  {post.title}
+              <Link className="post__link" to={`/posts/${post.id}`} key={post.id}>
+                <div className="post">
+                  <strong>Post title: </strong>{post.title}
                 </div>
-              </div>
+              </Link>
             )
           })
         }
