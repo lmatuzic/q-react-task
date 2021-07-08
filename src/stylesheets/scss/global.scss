@@ -1,3 +1,25 @@
+@use './abstracts';
+@use './components';
+
 .content {
-  background-color: rgb(251, 250, 250);
+  background-color: abstracts.$baby-gray;
+}
+
+.container {
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (min-width: 768px) {
+    width: 750px;
+  }
+
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
 }

@@ -1,8 +1,27 @@
+import { FC } from 'react';
+import { Post } from '../types';
 
-const Posts: React.FC = () => {
+type PostProps = {
+  posts: Post[];
+}
+
+const Posts: FC<PostProps> = ({ posts }) => {
   return (
-    <div>
-      <h1>Posts</h1>
+    <div className="container">
+      <div className="posts">
+        {
+          posts && posts.map(post => {
+            return (
+              <div className="card" key={post.id}>
+                <div>
+                  <strong>Post title: </strong>
+                  {post.title}
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
   )
 }

@@ -1,19 +1,13 @@
 import './stylesheets/scss/global.scss';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Switch, Route, useLocation, Link } from "react-router-dom";
 import Posts from './components/Posts';
 import PostDetails from './components/PostDetails';
+import { Post } from './types';
 
-const App: React.FC = () => {
-  const [posts, setPosts] = useState<IPost[]>([]);
+const App: FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
   let location = useLocation();
-
-  interface IPost {
-    userID: number;
-    id: string;
-    title: string;
-    body: string;
-  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +26,6 @@ const App: React.FC = () => {
   const showAllPosts = () => {
     console.log(posts);
   }
-
   showAllPosts();
 
   return (
@@ -56,7 +49,7 @@ const App: React.FC = () => {
           </Route>
 
           <Route path="/posts">
-            <Posts />
+            <Posts posts={posts}/>
           </Route>
           
           <Route path="/posts/:id">
