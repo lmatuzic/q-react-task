@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Post } from '../types';
 import { Link } from 'react-router-dom'
 
@@ -7,6 +7,10 @@ type PostProps = {
 }
 
 const Posts: FC<PostProps> = ({ posts }) => {
+  useEffect(() => {
+    console.log("hello from Posts component")
+  }, []);
+
   return (
     <div className="container">
       <div className="posts">

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router";
 
 const PostDetails: React.FC = () => {
@@ -7,8 +8,12 @@ const PostDetails: React.FC = () => {
 
   const { id } = useParams<ParamTypes>();
 
+  useEffect(() => {
+    console.log("hello from Post Details component")
+  }, []);
+
   return (
-    <div>
+    <div className="container">
       <h1>Post Details</h1>
       <div>Post - { id }</div>
     </div>

@@ -1,6 +1,8 @@
 import './stylesheets/scss/global.scss';
 import { FC, useEffect, useState } from 'react';
-import { Switch, Route, useLocation, Link } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
+import Navbar from './components/Navbar';
+import Home from './components/Home';
 import Posts from './components/Posts';
 import PostDetails from './components/PostDetails';
 import { Post } from './types';
@@ -25,29 +27,17 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-
-          <li>
-            <Link to="/posts">Posts</Link>
-          </li>
-        </ul>
-      </nav>
+      <Navbar />
 
       <main className="content">
         <Switch location={location} key={location.pathname}>
           <Route exact path="/">
-            <h1>Home</h1>
+            <Home />
           </Route>
 
           {/* this route must have exact because if it doesn't, it won't open details of post */}
           <Route exact path="/posts">
-            <Posts 
-              posts={posts}
-            />
+            <Posts posts={posts} />
           </Route>
           
           <Route path="/posts/:id">

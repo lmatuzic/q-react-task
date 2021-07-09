@@ -1,8 +1,24 @@
 @use './abstracts';
 @use './components';
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap');
+
+html { 
+  overflow-y: scroll; // prevent jumping scrollbar issue
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Mulish', sans-serif;
+}
 
 a {
   text-decoration: none;
+}
+
+.content {
+  margin-top: 4rem;
 }
 
 .container {

@@ -1,0 +1,27 @@
+@use '../abstracts';
+
+.navbar {
+  font-size: 1.25rem;
+  border-bottom: 1px solid abstracts.$light-gray;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 1.25rem;
+    list-style: none;
+
+    li {
+      margin: 0 2rem;
+
+      a {
+        color: abstracts.$black;
+        transition: color 0.25s ease;
+
+        &:hover {
+          color: abstracts.$blue;
+        }
+      }
+    }
+  }
+}
