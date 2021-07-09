@@ -1,0 +1,30 @@
+@use '../abstracts';
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .post {
+    border: abstracts.$border;
+    border-radius: abstracts.$border-radius;
+    cursor: pointer;
+    padding: 1rem;
+    width: 100%;
+    transition: transform 0.15s ease;
+
+    &:hover {
+      transform: scale(1.025);
+      border-color: abstracts.$dark-blue;
+    }
+
+    &__link {
+      display: flex;
+      color: abstracts.$black;
+    }
+  }
+}

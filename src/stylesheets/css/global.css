@@ -1,3 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap");
+.navbar {
+  font-size: 1.25rem;
+  border-bottom: 1px solid #c5c5c5;
+}
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 1.25rem;
+  list-style: none;
+}
+.navbar ul li {
+  margin: 0 2rem;
+}
+.navbar ul li a {
+  color: #181616;
+  transition: color 0.25s ease;
+}
+.navbar ul li a:hover {
+  color: rgba(25, 108, 241, 0.842);
+}
+
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+}
+@media (max-width: 768px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
+}
+.posts .post {
+  border: 1px solid #181616;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  transition: transform 0.15s ease;
+}
+.posts .post:hover {
+  transform: scale(1.025);
+  border-color: #1761b6;
+}
+.posts .post__link {
+  display: flex;
+  color: #181616;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Mulish", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
 .content {
-  background-color: #fbfafa;
+  margin-top: 4rem;
+}
+
+.container {
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }
