@@ -1,6 +1,16 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
-const Home: FC = () => {
+type MessageProps = {
+  propsMessage: string;
+}
+
+const Home: FC<MessageProps> = ({propsMessage}) => {
+  const componentName = "Home component";
+
+  useEffect(() => {
+    console.log(`${propsMessage} ${componentName}`)
+  }, [propsMessage]);
+
   return (
     <div className="container">
       <h1>Home</h1>
@@ -8,4 +18,4 @@ const Home: FC = () => {
   )
 }
 
-export default Home
+export default Home;

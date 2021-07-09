@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom'
 
 type PostProps = {
   posts: Post[];
+  propsMessage: string;
 }
 
-const Posts: FC<PostProps> = ({ posts }) => {
+const Posts: FC<PostProps> = ({ posts, propsMessage }) => {
+  const componentName = "Posts component"
+  
   useEffect(() => {
-    console.log("hello from Posts component")
-  }, []);
+    console.log(`${propsMessage} ${componentName}`)
+  }, [propsMessage]);
 
   return (
     <div className="container">

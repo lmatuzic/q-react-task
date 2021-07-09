@@ -10,6 +10,7 @@ import { Post } from './types';
 const App: FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   let location = useLocation();
+  const propsMessage = "Hello from ";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,16 +33,19 @@ const App: FC = () => {
       <main className="content">
         <Switch location={location} key={location.pathname}>
           <Route exact path="/">
-            <Home />
+            <Home propsMessage={propsMessage}  />
           </Route>
 
           {/* this route must have exact because if it doesn't, it won't open details of post */}
           <Route exact path="/posts">
-            <Posts posts={posts} />
+            <Posts 
+              posts={posts} 
+              propsMessage={propsMessage} 
+            />
           </Route>
           
           <Route path="/posts/:id">
-            <PostDetails />
+            <PostDetails propsMessage={propsMessage} />
           </Route>
         </Switch>
       </main>

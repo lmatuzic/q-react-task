@@ -1,16 +1,21 @@
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useParams } from "react-router";
 
-const PostDetails: React.FC = () => {
+type MessageProps = {
+  propsMessage: string;
+}
+
+const PostDetails: FC<MessageProps> = ({propsMessage}) => {
+  const componentName = "PostDetails Component"
+  
   interface ParamTypes {
     id: string;
   }
-
   const { id } = useParams<ParamTypes>();
 
   useEffect(() => {
-    console.log("hello from Post Details component")
-  }, []);
+    console.log(`${propsMessage} ${componentName}`)
+  }, [propsMessage]);
 
   return (
     <div className="container">
