@@ -19,6 +19,24 @@ a {
 
 .content {
   margin: 4rem 0;
+
+  .input__wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+
+    input {
+      border: abstracts.$border;
+      border-radius: abstracts.$border-radius;
+      border-color: abstracts.$light-gray;
+      padding: 1rem;
+      outline: none;
+
+      &:active, &:focus {
+        border-color: abstracts.$blue;
+      }
+    }
+  }
 }
 
 .container {
