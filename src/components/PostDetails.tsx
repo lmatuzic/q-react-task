@@ -1,18 +1,18 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { Post, Comment } from '../types';
+import { PostType, Comment } from '../types';
 
 type PostProps = {
   propsMessage: string;
+  comments: Comment[];
 }
 
 interface ParamTypes {
   id: string;
 }
 
-const PostDetails: FC<PostProps> = ({ propsMessage }) => {
-  const [post, setPost] = useState<Post>();
-  const [comments, setComments] = useState<Comment[]>([]);
+const PostDetails: FC<PostProps> = ({ propsMessage, comments }) => {
+  const [post, setPost] = useState<PostType>();
   const componentName = "PostDetails Component";
   let { id } = useParams<ParamTypes>();
 
@@ -20,11 +20,8 @@ const PostDetails: FC<PostProps> = ({ propsMessage }) => {
     const fetchPostDetails = async () => {
       try {
         const postDetailsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-        const commentsResponse = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
-        const commentsData = await commentsResponse.json();
         const postDetails = await postDetailsResponse.json();
         setPost(postDetails);
-        setComments(commentsData);
       } catch(err) {
         console.log(err.message);
       }
@@ -47,15 +44,13 @@ const PostDetails: FC<PostProps> = ({ propsMessage }) => {
         </div>
 
         <div className="comments">
-          <h2 className="comments__title">Post comments</h2>
+          <h2 className="comments__title">Comments</h2>
           {
-            comments && comments.map(comment => {
-              return (
-                <div className="comment" key={comment.id}>
-                  "{comment.body}"
-                </div>
-              )
-            })
+            comments && comments.filter(comment => comment.postId === post?.id).map(comment => (
+              <div className="comment" key={comment.id}>
+                "{comment.body}"
+              </div>
+            ))
           }
         </div>
       </div>
