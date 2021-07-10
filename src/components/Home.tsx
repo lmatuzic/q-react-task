@@ -14,6 +14,7 @@ const Home: FC<MessageProps> = ({propsMessage}) => {
   return (
     <div className="container">
       <h1>Home</h1>
+      <p>I added this component just so I can add a navbar for easy navigation. Hope you won't mind :)</p>
     </div>
   )
 }

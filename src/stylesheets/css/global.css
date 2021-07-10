@@ -24,28 +24,55 @@
 .post {
   border: 1px solid #181616;
   border-radius: 4px;
+  background-color: #f8f6f6;
   cursor: pointer;
-  padding: 1rem;
+  padding: 1.5rem;
   width: 100%;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: box-shadow 0.15s ease;
 }
 .post:hover {
-  border-color: rgba(25, 108, 241, 0.842);
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.57);
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .post__link {
   display: flex;
   color: #181616;
-  margin-bottom: 1.25rem;
+  margin-bottom: 3rem;
 }
-.post__details .comments__title {
-  margin-top: 5rem;
+.post__info {
+  margin-bottom: 5rem;
 }
 .post__details .comment {
   border: 1px solid #b9b9b9;
   border-radius: 4px;
   padding: 1rem;
   margin-bottom: 1.25rem;
+}
+.post__user {
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.post__title {
+  font-size: 1.35rem;
+}
+.post__body {
+  margin-top: 0.35rem;
+}
+.post .comments {
+  border: 1px solid #181616;
+  border-color: #b9b9b9;
+  border-radius: 4px;
+  padding: 1rem;
+}
+.post .comments__title {
+  margin: 2rem 0 0.5rem 0;
+  font-weight: 700;
+}
+.post .comments .comment {
+  margin-bottom: 1rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid #181616;
+  border-color: #b9b9b9;
 }
 
 html {

@@ -3,34 +3,65 @@
 .post {
   border: abstracts.$border;
   border-radius: abstracts.$border-radius;
+  background-color: abstracts.$baby-gray;
   cursor: pointer;
-  padding: 1rem;
+  padding: 1.5rem;
   width: 100%;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: box-shadow 0.15s ease;
 
   &:hover {
-    border-color: abstracts.$blue;
-    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.57);
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.5);
   }
 
   &__link {
     display: flex;
     color: abstracts.$black;
-    margin-bottom: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  &__info {
+    margin-bottom: 5rem;
   }
 
   &__details {
-    .comments {
-      &__title {
-        margin-top: 5rem;
-      }
-    }
-    
     .comment {
       border: 1px solid abstracts.$light-gray;
       border-radius: abstracts.$border-radius;
       padding: 1rem;
       margin-bottom: 1.25rem;
+    }
+  }
+
+  &__user {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-size: 1.35rem;
+  }
+
+  &__body {
+    margin-top: 0.35rem;
+  }
+
+  .comments {
+    border: abstracts.$border;
+    border-color: abstracts.$light-gray;
+    border-radius: abstracts.$border-radius;
+    padding: 1rem;
+
+    &__title {
+      margin: 2rem 0 0.5rem 0;
+      font-weight: 700;
+    }
+
+    .comment {
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      border-bottom: abstracts.$border;
+      border-color: abstracts.$light-gray;
     }
   }
 }
