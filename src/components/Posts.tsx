@@ -12,6 +12,7 @@ interface ParamTypes {
 }
 
 const Posts: FC<PostProps> = ({ propsMessage, comments }) => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState<PostType[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const componentName = "Posts component";
@@ -37,9 +38,19 @@ const Posts: FC<PostProps> = ({ propsMessage, comments }) => {
 
   return (
     <div className="container">
+      <div className="input__wrapper">
+        <input 
+          type="text" 
+          placeholder="Search"
+          onChange={e => setSearchTerm(e.target.value)}
+        />
+      </div>
+      
       <div className="posts">
         {
-          posts.map(post => {
+          posts.filter((post) => (
+            post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.body.toLowerCase().includes(searchTerm.toLowerCase())
+          )).map(post => {
             return (
               <Link className="post__link" to={`/posts/${post.id}`} key={post.id}>
                 <div className="post">
