@@ -1,21 +1,31 @@
 import { FC, useEffect, useState } from 'react';
-import { Post } from '../types';
-import { Link } from 'react-router-dom'
+import { Post, User } from '../types';
+import { Link, useParams } from 'react-router-dom';
 
 type PostProps = {
   propsMessage: string;
 }
 
-const Posts: FC<PostProps> = ({propsMessage}) => {
+interface ParamTypes {
+  id: string;
+}
+
+const Posts: FC<PostProps> = ({ propsMessage }) => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const componentName = "Posts component";
+  let { id } = useParams<ParamTypes>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://jsonplaceholder.typicode.com/posts");
-        const data = await response.json();
-        setPosts(data);
+        const postsResponse = await fetch("https://jsonplaceholder.typicode.com/posts");
+        const usersResponse = await fetch(`https://jsonplaceholder.typicode.com/users`);
+        const postsData = await postsResponse.json();
+        const usersData = await usersResponse.json();
+        console.log(usersData);
+        setPosts(postsData);
+        setUsers(usersData);
       } catch (err) {
         console.log(err.message);
       }
@@ -23,7 +33,7 @@ const Posts: FC<PostProps> = ({propsMessage}) => {
 
     fetchData();
     console.log(`${propsMessage} ${componentName}`)
-  }, [propsMessage]);
+  }, [propsMessage, id]);
 
   return (
     <div className="container">
@@ -34,6 +44,13 @@ const Posts: FC<PostProps> = ({propsMessage}) => {
               <Link className="post__link" to={`/posts/${post.id}`} key={post.id}>
                 <div className="post">
                   <strong>Post title: </strong>{post.title}
+                  {
+                    users && users.filter(user => user.id === post.userId).map(user => (
+                      <div key={user.id}>
+                        Associated user: {user.name}
+                      </div>
+                    ))
+                  }
                 </div>
               </Link>
             )

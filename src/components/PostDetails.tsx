@@ -10,7 +10,7 @@ interface ParamTypes {
   id: string;
 }
 
-const PostDetails: FC<PostProps> = ({propsMessage}) => {
+const PostDetails: FC<PostProps> = ({ propsMessage }) => {
   const [post, setPost] = useState<Post>();
   const [comments, setComments] = useState<Comment[]>([]);
   const componentName = "PostDetails Component";
@@ -40,13 +40,14 @@ const PostDetails: FC<PostProps> = ({propsMessage}) => {
   return (
     <div className="container">
       <div className="post__details">
-        <h2 className="post__title">{post && post.title}</h2>
-        <div className="post__id">Post ID - { id }</div>
-        <p className="post__body">{post && post.body}</p>
+        <div className="post__info">
+          <h2 className="post__title">{post && post.title}</h2>
+          <div className="post__id">Post ID - { id }</div>
+          <p className="post__body">{post && post.body}</p>
+        </div>
 
-
-        <h2 className="comments__title">Post comments</h2>
         <div className="comments">
+          <h2 className="comments__title">Post comments</h2>
           {
             comments && comments.map(comment => {
               return (

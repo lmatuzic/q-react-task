@@ -19,13 +19,11 @@
     margin-bottom: 1.25rem;
   }
 
+  &__info {
+    margin-bottom: 5rem;
+  }
+
   &__details {
-    .comments {
-      &__title {
-        margin-top: 5rem;
-      }
-    }
-    
     .comment {
       border: 1px solid abstracts.$light-gray;
       border-radius: abstracts.$border-radius;

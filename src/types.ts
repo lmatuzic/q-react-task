@@ -1,9 +1,9 @@
 export type Post = {
-  userID: number;
+  userId: number;
   id: number;
   title: string;
   body: string;
-  [key: string]: any 
+  [key: string]: any;
 }
 
 export type Comment = {
@@ -11,5 +11,13 @@ export type Comment = {
   id: number;
   email: string;
   body: string;
-  [key: string]: any 
+  [key: string]: any;
+}
+
+export type User = {
+  id: number;
+  name: string;
+  email: string;
+  website: string;
+  [key: string]: any;
 }
