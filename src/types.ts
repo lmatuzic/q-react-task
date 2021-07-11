@@ -3,21 +3,18 @@ export type PostType = {
   id: number;
   title: string;
   body: string;
-  [key: string]: any;
 }
 
-export type Comment = {
+export type CommentType = {
   postId: number;
   id: number;
   email: string;
   body: string;
-  [key: string]: any;
 }
 
-export type User = {
+export type UserType = {
   id: number;
   name: string;
   email: string;
   website: string;
-  [key: string]: any;
 }

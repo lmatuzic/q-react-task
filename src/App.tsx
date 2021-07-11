@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Posts from './components/Posts';
 import PostDetails from './components/PostDetails';
-import { Comment } from './types';
+import { CommentType } from './types';
 
 
 interface ParamTypes {
@@ -13,7 +13,7 @@ interface ParamTypes {
 }
 
 const App: FC = () => {
-  const [comments, setComments] = useState<Comment[]>([]);
+  const [comments, setComments] = useState<CommentType[]>([]);
   const propsMessage = "Hello from ";
   let location = useLocation();
   let { id } = useParams<ParamTypes>();

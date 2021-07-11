@@ -1,10 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { PostType, Comment } from '../types';
+import { PostType, CommentType } from '../types';
+import Comment from './Comment';
 
 type PostProps = {
   propsMessage: string;
-  comments: Comment[];
+  comments: CommentType[];
 }
 
 interface ParamTypes {
@@ -46,10 +47,11 @@ const PostDetails: FC<PostProps> = ({ propsMessage, comments }) => {
         <div className="comments">
           <h2 className="comments__title">Comments</h2>
           {
-            comments && comments.filter(comment => comment.postId === post?.id).map(comment => (
-              <div className="comment" key={comment.id}>
-                "{comment.body}"
-              </div>
+            comments.filter(comment => comment.postId === post?.id).map(comment => (
+              <Comment 
+                key={comment.id}
+                comment={comment}
+              />
             ))
           }
         </div>
