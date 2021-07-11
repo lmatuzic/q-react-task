@@ -104,6 +104,7 @@ a {
   border-color: #b9b9b9;
   padding: 1rem;
   outline: none;
+  font-size: 1rem;
 }
 .content .input__wrapper input:active, .content .input__wrapper input:focus {
   border-color: rgba(25, 108, 241, 0.842);

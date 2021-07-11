@@ -1,20 +1,25 @@
 import { FC, useEffect, useState } from 'react';
-import { PostType, User, Comment } from '../types';
-import { Link, useParams } from 'react-router-dom';
+import { PostType, UserType, CommentType } from '../types';
+import { useParams } from 'react-router-dom';
+import Post from '../components/Post';
 
 type PostProps = {
   propsMessage: string;
-  comments: Comment[];
+  comments: CommentType[];
 }
 
 interface ParamTypes {
   id: string;
 }
 
+export const getData = () => {
+  console.log('test get data');
+}
+
 const Posts: FC<PostProps> = ({ propsMessage, comments }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState<PostType[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<UserType[]>([]);
   const componentName = "Posts component";
   let { id } = useParams<ParamTypes>();
 
@@ -50,34 +55,15 @@ const Posts: FC<PostProps> = ({ propsMessage, comments }) => {
         {
           posts.filter((post) => (
             post.title.toLowerCase().includes(searchTerm.toLowerCase()) || post.body.toLowerCase().includes(searchTerm.toLowerCase())
-          )).map(post => {
-            return (
-              <Link className="post__link" to={`/posts/${post.id}`} key={post.id}>
-                <div className="post">
-                  {
-                    users && users.filter(user => user.id === post.userId).map(user => (
-                      <div key={user.id} className="post__user">
-                        {user.name}
-                      </div>
-                    ))
-                  }
-                  <strong className="post__title">{post.title}</strong>
-                  <p className="post__body">{post.body}</p>
-
-                  <div className="comments__title">Comments</div>
-                  <div className="comments">
-                    {
-                      comments && comments.filter(comment => comment.postId === post.id).map(comment => (
-                        <div className="comment" key={comment.id}>
-                          "{comment.body}"
-                        </div>
-                      ))
-                    }
-                  </div>
-                </div>
-              </Link>
-            )
-          })
+          )).map(post => (
+            <Post
+              key={post.id}
+              post={post}
+              users={users} 
+              comments={comments}
+              propsMessage={propsMessage}
+            />
+          ))
         }
       </div>
     </div> 
