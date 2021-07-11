@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react';
 import { UserType, CommentType, PostType } from '../types';
 import { Link } from 'react-router-dom';
+import UserName from "./UserName";
 import Comment from './Comment';
 
 type PostProps = {
@@ -20,13 +21,11 @@ const Post: FC<PostProps> = ({users, comments, post, propsMessage}) => {
   return (
     <Link className="post__link" to={`/posts/${post.id}`} key={post.id}>
       <div className="post">
-        {
-          users.filter(user => user.id === post.userId).map(user => (
-            <div key={user.id} className="post__user">
-              {user.name}
-            </div>
-          ))
-        }
+        <UserName 
+          users={users}
+          post={post}
+          propsMessage={propsMessage}
+        />
         <strong className="post__title">{post.title}</strong>
         <p className="post__body">{post.body}</p>
 

@@ -1,37 +1,29 @@
 import { FC, useEffect, useState } from 'react';
 import { PostType, UserType, CommentType } from '../types';
-import { useParams } from 'react-router-dom';
 import Post from '../components/Post';
+
 
 type PostProps = {
   propsMessage: string;
   comments: CommentType[];
-}
-
-interface ParamTypes {
-  id: string;
+  users: UserType[];
 }
 
 export const getData = () => {
   console.log('test get data');
 }
 
-const Posts: FC<PostProps> = ({ propsMessage, comments }) => {
+const Posts: FC<PostProps> = ({ propsMessage, comments, users }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState<PostType[]>([]);
-  const [users, setUsers] = useState<UserType[]>([]);
   const componentName = "Posts component";
-  let { id } = useParams<ParamTypes>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const postsResponse = await fetch("https://jsonplaceholder.typicode.com/posts");
-        const usersResponse = await fetch(`https://jsonplaceholder.typicode.com/users`);
         const postsData = await postsResponse.json();
-        const usersData = await usersResponse.json();
         setPosts(postsData);
-        setUsers(usersData);
       } catch (err) {
         console.log(err.message);
       }
@@ -39,7 +31,7 @@ const Posts: FC<PostProps> = ({ propsMessage, comments }) => {
 
     fetchData();
     console.log(`${propsMessage} ${componentName}`)
-  }, [propsMessage, id]);
+  }, [propsMessage]);
 
   return (
     <div className="container">
