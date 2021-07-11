@@ -1,18 +1,21 @@
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { PostType, CommentType } from '../types';
+import { PostType, CommentType, UserType } from '../types';
+import UserName from "./UserName";
 import Comment from './Comment';
 
+
 type PostProps = {
-  propsMessage: string;
+  users: UserType[];
   comments: CommentType[];
+  propsMessage: string;
 }
 
 interface ParamTypes {
   id: string;
 }
 
-const PostDetails: FC<PostProps> = ({ propsMessage, comments }) => {
+const PostDetails: FC<PostProps> = ({ propsMessage, comments, users }) => {
   const [post, setPost] = useState<PostType>();
   const componentName = "PostDetails Component";
   let { id } = useParams<ParamTypes>();
@@ -39,8 +42,13 @@ const PostDetails: FC<PostProps> = ({ propsMessage, comments }) => {
     <div className="container">
       <div className="post__details">
         <div className="post__info">
+          <UserName 
+            users={users}
+            post={post}
+            propsMessage={propsMessage}
+          />
           <h2 className="post__title">{post && post.title}</h2>
-          <div className="post__id">Post ID - { id }</div>
+          <div className="post__id">Post ID - { post?.id }</div>
           <p className="post__body">{post && post.body}</p>
         </div>
 
